@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spotnet Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/main.css" />
+  <script src="bower_components/bootstrap/site/docs/4.1/assets/js/vendor/jquery-slim.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="src/main.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Spotnet Explorer</a>
+  </nav>
+  <div class="spotnet-container container">
+    <div class="row">
+      <div class="col-sm">
+        <div><strong>Total Balance:</strong> $1,230</div>
+        <div><strong>Available Balance:</strong> $180</div>
+        <div><strong>Lending Fees Owed:</strong> $9.73</div>
+      </div>
+      <div class="col-sm">
+        <div><strong>Unrealized Net PnL:</strong> $54.27</div>
+        <div><strong>Margin Required:</strong> $1,104</div>
+        <div><strong>Buying Power:</strong> $360</div>
+      </div>
+      <div class="col-sm">
+        <div><strong>Collateral %:</strong> 58%</div>
+        <div><strong>Open Positions Value:</strong> $2,208</div>
+      </div>
+    </div>
+
+    <ul class="actions-pane nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#transfers">Transfers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#trade">Trade</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#positions">Positions</a>
+      </li>
+    </ul>
+    <div class="actions-content tab-content">
+      <div class="tab-pane" id="transfers">
+        <p><input type="text" placeholder="1000"></p>
+        <p>
+          <input type="button" class="btn btn-primary" value="Deposit">
+          <input type="button" class="btn btn-primary" value="Withdraw">
+        </p>
+      </div>
+      <div class="tab-pane" id="trade">
+        <div class="card-deck">
+          <div class="trade-card card">
+            <div class="card-body">
+              <h5 class="card-title">EOS</h5>
+              <p class="card-text">
+                <div class="inventory">Available Inventory: 300</div>
+                <div>Price: 5.45 USD</div>
+                <div>Initial Margin: 50%</div>
+                <div>Minimum Margin: 15%</div>
+                <div>Daily Rate: 0.25%</div>
+              </p>
+            </div>
+          </div>
+
+          <div class="trade-card card">
+            <div class="card-body">
+              <h5 class="card-title">Binance Token</h5>
+              <p class="card-text">
+                <div class="inventory">Available Inventory: 200</div>
+                <div>Price: 9.8 USD</div>
+                <div>Initial Margin: 15</div>
+                <div>Minimum Margin: 15%</div>
+                <div>Daily Rate: 0.25%</div>
+              </p>
+            </div>
+          </div>
+
+          <div class="trade-card card">
+            <div class="card-body">
+              <h5 class="card-title">OmiseGO</h5>
+              <p class="card-text">
+                <div class="inventory">Available Inventory: 245</div>
+                <div>Price: 3.41 USD</div>
+                <div>Initial Margin: 50%</div>
+                <div>Minimum Margin: 15%</div>
+                <div>Daily Rate: 0.25%</div>
+              </p>
+            </div>
+          </div>
+
+          <div class="trade-card card">
+            <div class="card-body">
+              <h5 class="card-title">0x</h5>
+              <p class="card-text">
+                <div class="inventory">Available Inventory: 540</div>
+                <div>Price: 0.63 USD</div>
+                <div>Initial Margin: 50%</div>
+                <div>Minimum Margin: 15%</div>
+                <div>Daily Rate: 0.25%</div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane show active" id="positions">
+        <table class="positions-table table table-striped">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Trade Price</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Value</th>
+              <th>Open</th>
+              <th>Daily Rate</th>
+              <th>PnL</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>EOS</strong></td>
+              <td>100</td>
+              <td>$5.46</td>
+              <td>$546</td>
+              <td>9/16/2018</td>
+              <td>0.25%</td>
+              <td>$0.00</td>
+              <td>$0.00</td>
+              <td><button class="btn btn-primary">Buy to Cover</button></td>
+            </tr>
+            <tr>
+              <td><strong>BNB</strong></td>
+              <td>100</td>
+              <td>$9.80</td>
+              <td>$980</td>
+              <td>9/15/2018</td>
+              <td>0.25%</td>
+              <td>$2.51</td>
+              <td>$24.00</td>
+              <td><button class="btn btn-primary">Buy to Cover</button></td>
+            </tr>
+            <tr>
+              <td><strong>OMG</strong></td>
+              <td>200</td>
+              <td>$3.41</td>
+              <td>$682</td>
+              <td>9/12/2018</td>
+              <td>0.25%</td>
+              <td>$7.22</td>
+              <td>$40.00</td>
+              <td><button class="btn btn-primary">Buy to Cover</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

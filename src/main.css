@@ -1,0 +1,25 @@
+.spotnet-container {
+  margin: 30px auto;
+}
+
+.actions-pane {
+  margin: 20px auto;
+}
+
+.actions-content {
+  margin: 20px auto;
+}
+
+.trade-card {
+  text-align: center;
+}
+
+.trade-card .inventory {
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.positions-table td:last-child {
+  padding: 5px
+}

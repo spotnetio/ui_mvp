@@ -1,0 +1,22 @@
+{
+  "name": "spotnet",
+  "version": "1.0.0",
+  "description": "MVP",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spotnetio/ui_mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spotnetio/ui_mvp/issues"
+  },
+  "homepage": "https://github.com/spotnetio/ui_mvp#readme",
+  "devDependencies": {
+    "eslint": "^5.6.0"
+  }
+}
