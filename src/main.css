@@ -23,3 +23,11 @@
 .positions-table td:last-child {
   padding: 5px
 }
+
+#buy-to-cover-confirmation-modal p.transaction-link {
+  display: inline-block;
+}
+
+#buy-to-cover-confirmation-modal .status {
+  color: green;
+}

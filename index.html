@@ -45,7 +45,7 @@
       </li>
     </ul>
     <div class="actions-content tab-content">
-      <div class="tab-pane show active" id="transfers">
+      <div class="tab-pane" id="transfers">
         <p><input type="text" id="transfer-amount" placeholder="1000"></p>
         <p>
           <button id="deposit" type="button" class="btn btn-primary">Deposit</button>
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <div class="tab-pane" id="positions">
+      <div class="tab-pane show active" id="positions">
         <table class="positions-table table table-striped">
           <thead>
             <tr>
@@ -133,7 +133,7 @@
               <td>0.25%</td>
               <td>$0.00</td>
               <td>$0.00</td>
-              <td><button class="btn btn-primary">Buy to Cover</button></td>
+              <td><button class="buy-to-cover btn btn-primary" data-ticker="EOS" data-trade-price="5.46" data-shares="100" data-toggle="modal" data-target="#buy-to-cover-modal">Buy to Cover</button></td>
             </tr>
             <tr>
               <td><strong>BNB</strong></td>
@@ -144,7 +144,7 @@
               <td>0.25%</td>
               <td>$2.51</td>
               <td>$24.00</td>
-              <td><button class="btn btn-primary">Buy to Cover</button></td>
+              <td><button class="buy-to-cover btn btn-primary" data-ticker="BNB" data-trade-price="9.80" data-shares="100" data-toggle="modal" data-target="#buy-to-cover-modal">Buy to Cover</button></td>
             </tr>
             <tr>
               <td><strong>OMG</strong></td>
@@ -155,10 +155,50 @@
               <td>0.25%</td>
               <td>$7.22</td>
               <td>$40.00</td>
-              <td><button class="btn btn-primary">Buy to Cover</button></td>
+              <td><button class="buy-to-cover btn btn-primary" data-ticker="OMG" data-trade-price="3.41" data-shares="200" data-toggle="modal" data-target="#buy-to-cover-modal">Buy to Cover</button></td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="buy-to-cover-modal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        </div>
+        <div class="modal-body">
+          <div><strong>Trade Value:</strong> <span class="trading-value"></span></div>
+          <div><strong>Resulting Buying Power:</strong> <span class="buying-power"></span></div>
+          <input type="hidden" name="trade_price">
+          <input type="hidden" name="shares">
+          <input type="hidden" name="ticker">
+        </div>
+        <div class="modal-footer">
+          <button data-toggle="modal" data-target="#buy-to-cover-confirmation-modal" class="cover-confirm btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="buy-to-cover-confirmation-modal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Copy the Transaction ID to Track its Progress</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="transaction-link"></p>
+          <div><strong>Status</strong> <span class="status">Pending</span></div>
+          <div><strong>Transaction</strong> <span class="transaction"></span></div>
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-primary">Close</button>
+        </div>
       </div>
     </div>
   </div>
