@@ -1,6 +1,8 @@
-$(function() {
-  $('#actions-nav a').on('click', function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  })
+$(() => {
+  $('#deposit').on('click', () => {
+    console.log(`you want to deposit ${$('#transfer-amount').val()}`);
+  });
+  $('#withdraw').on('click', () => {
+    console.log(`you want to withdraw ${$('#transfer-amount').val()}`);
+  });
 });

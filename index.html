@@ -35,21 +35,21 @@
 
     <ul class="actions-pane nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#transfers">Transfers</a>
+        <a class="nav-link active" data-toggle="tab" href="#transfers">Transfers</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#trade">Trade</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#positions">Positions</a>
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#positions">Positions</a>
       </li>
     </ul>
     <div class="actions-content tab-content">
-      <div class="tab-pane" id="transfers">
-        <p><input type="text" placeholder="1000"></p>
+      <div class="tab-pane show active" id="transfers">
+        <p><input type="text" id="transfer-amount" placeholder="1000"></p>
         <p>
-          <input type="button" class="btn btn-primary" value="Deposit">
-          <input type="button" class="btn btn-primary" value="Withdraw">
+          <button id="deposit" type="button" class="btn btn-primary">Deposit</button>
+          <button id="withdraw" type="button" class="btn btn-primary">Withdraw</button>
         </p>
       </div>
       <div class="tab-pane" id="trade">
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <div class="tab-pane show active" id="positions">
+      <div class="tab-pane" id="positions">
         <table class="positions-table table table-striped">
           <thead>
             <tr>
