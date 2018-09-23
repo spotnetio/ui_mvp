@@ -1,0 +1,21 @@
+{
+  "name": "spotnet",
+  "description": "MVP",
+  "main": "index.html",
+  "authors": [
+    "marat@spotnet.io"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/spotnetio/ui_mvp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3"
+  }
+}
