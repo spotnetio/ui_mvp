@@ -9,6 +9,9 @@
   <link rel="stylesheet" type="text/css" media="screen" href="src/main.css" />
   <script src="bower_components/bootstrap/site/docs/4.1/assets/js/vendor/jquery-slim.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/lodash/dist/lodash.js"></script>
+  <script type="text/javascript" src="src/card-templates.js"></script>
+  <script src="src/spotWeb3.js"></script>
   <script src="src/main.js"></script>
 </head>
 <body>
@@ -45,20 +48,23 @@
       </li>
     </ul>
     <div class="actions-content tab-content">
-      <div class="tab-pane" id="transfers">
-        <p><input type="text" id="transfer-amount" placeholder="1000"></p>
+      
+      <div class="tab-pane show active" id="transfers">
+        <p><input type="text" id="transfer-amount"></p>
         <p>
-          <button id="deposit" type="button" class="btn btn-primary">Deposit</button>
+          <button id="deposit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deposit-modal">Deposit</button>
           <button id="withdraw" type="button" class="btn btn-primary">Withdraw</button>
         </p>
       </div>
+
       <div class="tab-pane" id="trade">
-        <div class="card-deck">
+        <div class="inventory card-deck mb-3 text-center"></div>
+        <!--div class="card-deck mb-3">
           <div class="trade-card card">
             <div class="card-body">
               <h5 class="card-title">EOS</h5>
               <p class="card-text">
-                <div class="inventory">Available Inventory: 300</div>
+                <div class="inventory">Available Inventory: 123</div>
                 <div>Price: 5.45 USD</div>
                 <div>Initial Margin: 50%</div>
                 <div>Minimum Margin: 15%</div>
@@ -105,10 +111,10 @@
               </p>
             </div>
           </div>
-        </div>
+        </div-->
       </div>
 
-      <div class="tab-pane show active" id="positions">
+      <div class="tab-pane" id="positions">
         <table class="positions-table table table-striped">
           <thead>
             <tr>
@@ -159,6 +165,46 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="deposit-modal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        </div>
+        <div class="modal-body">
+          <div><strong>Trade Value:</strong> <span class="trading-value"></span></div>
+          <div><strong>Resulting Buying Power:</strong> <span class="buying-power"></span></div>
+          <input type="hidden" name="trade_price">
+          <input type="hidden" name="shares">
+          <input type="hidden" name="ticker">
+        </div>
+        <div class="modal-footer">
+          <button data-toggle="modal" data-target="#deposit-confirmation-modal" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="deposit-confirmation-modal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Copy the Transaction ID to Track its Progress</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="transaction-link"></p>
+          <div><strong>Status</strong> <span class="status">Pending</span></div>
+          <div><strong>Transaction</strong> <span class="transaction"></span></div>
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-primary">Close</button>
+        </div>
       </div>
     </div>
   </div>
