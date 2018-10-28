@@ -31,3 +31,117 @@
 #buy-to-cover-confirmation-modal .status {
   color: green;
 }
+
+
+/* ORIGINAL */
+.inventory-card .form-trade {
+  transition: .5s ease;
+  opacity: 0.0;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.trade-card .form-trade, 
+.position-card .form-trade {
+  transition: .5s ease;
+  opacity: 0.0;
+  position: absolute;
+  top: 86%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.position-card .form-recall, 
+.trade-card .form-buy2cover {
+  transition: .5s ease;
+  opacity: 0.0;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.inventory-card:hover .form-trade,
+.trade-card:hover .form-trade,
+.position-card:hover .form-trade,
+.position-card:hover .form-recall, 
+.trade-card:hover .form-buy2cover {
+  opacity: 1;
+}
+
+.inventory-card .card-header, 
+.position-card .card-header, 
+.trade-card .card-header {
+  transition: .5s ease;
+  opacity: .7;
+}
+
+.inventory-card .metrics, 
+.position-card .metrics, 
+.trade-card .metrics {
+  transition: .5s ease;
+  opacity: 1;
+}
+
+.inventory-card:hover .card-header, 
+.position-card:hover .card-header, 
+.trade-card:hover .card-header {
+  opacity: 1;
+}
+
+.inventory-card:hover .metrics, 
+.position-card:hover .metrics, 
+.trade-card:hover .metrics {
+  opacity: 0.2;
+}
+
+.position-card,
+.trade-card {
+  height: 100%;
+  padding: 0;
+}
+
+.position-card .metrics,
+.inventory-card .metrics,
+.trade-card .metrics {
+  font-size: 12px;
+  width: 100%;
+}
+
+.position-card .metrics:first-child,
+.trade-card .metrics:first-child {
+  border-top: none;
+}
+
+.metrics .metrics-name {
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.metrics .metrics-value {
+  text-align: right;
+  font-weight: bold;
+}
+
+.metrics .underline {
+  text-decoration: underline;
+}
+
+.red {
+  color: #F36E65;
+}
+
+.blue {
+  color: #009CC2;
+}
+
+.position-card input[name="trade"],
+.trade-card input[name="trade"],
+.inventory-card input[name="trade"] {
+  width: 100%;
+}

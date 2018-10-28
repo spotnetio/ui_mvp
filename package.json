@@ -18,5 +18,9 @@
   "homepage": "https://github.com/spotnetio/ui_mvp#readme",
   "devDependencies": {
     "eslint": "^5.6.0"
+  },
+  "dependencies": {
+    "truffle": "^4.1.14",
+    "truffle-contract": "^3.0.6"
   }
 }

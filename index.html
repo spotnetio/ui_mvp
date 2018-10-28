@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="src/main.css" />
-  <script src="bower_components/bootstrap/site/docs/4.1/assets/js/vendor/jquery-slim.min.js"></script>
+  <link rel="icon" type="image/png" href="https://s3.amazonaws.com/spotnet/favicon.ico">
+  <link rel="shortcut icon" href="https://s3.amazonaws.com/spotnet/favicon.ico" type="image/x-icon">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/lodash/dist/lodash.js"></script>
-  <script type="text/javascript" src="src/card-templates.js"></script>
-  <script src="src/spotWeb3.js"></script>
-  <script src="src/main.js"></script>
+  <script src="node_modules/truffle-contract/dist/truffle-contract.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,18 +21,34 @@
   <div class="spotnet-container container">
     <div class="row">
       <div class="col-sm">
-        <div><strong>Total Balance:</strong> $1,230</div>
-        <div><strong>Available Balance:</strong> $180</div>
-        <div><strong>Lending Fees Owed:</strong> $9.73</div>
+        <div><strong>Total Balance:</strong>  
+          <span class="totalBalance"> 0</span>
+        </div>
+        <div><strong>Available Balance:</strong>  
+          <span class="availableBalance"> 0</span>
+        </div>
+        <div><strong>Lending Fees Owed:</strong>  
+          <span class="lendingFeesOwed"> 0</span>
+        </div>
       </div>
       <div class="col-sm">
-        <div><strong>Unrealized Net PnL:</strong> $54.27</div>
-        <div><strong>Margin Required:</strong> $1,104</div>
-        <div><strong>Buying Power:</strong> $360</div>
+        <div><strong>Unrealized Net PnL:</strong>  
+          <span class="unrealizedNetPnL"> 0</span>
+        </div>
+        <div><strong>Margin Required:</strong>  
+          <span class="marginRequired"> 0</span>
+        </div>
+        <div><strong>Buying Power:</strong> 
+          <span class="buyingPower"> 0</span>
+        </div>
       </div>
       <div class="col-sm">
-        <div><strong>Collateral %:</strong> 58%</div>
-        <div><strong>Open Positions Value:</strong> $2,208</div>
+        <div><strong>Collateral: </strong>  
+          <span class="collateralPct"> 0%</span>
+        </div>
+        <div><strong>Open Positions Value:</strong> 
+          <span class="openPositionsValue"> 0</span>
+        </div>
       </div>
     </div>
 
@@ -52,66 +68,13 @@
       <div class="tab-pane show active" id="transfers">
         <p><input type="text" id="transfer-amount"></p>
         <p>
-          <button id="deposit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deposit-modal">Deposit</button>
-          <button id="withdraw" type="button" class="btn btn-primary">Withdraw</button>
+          <button id="deposit" type="button" class="deposit btn btn-primary" data-toggle="modal" data-target="#deposit-modal">Deposit</button>
+          <button id="withdraw" type="button" class="withdraw btn btn-primary" data-toggle="modal" data-target="#withdraw-modal">Withdraw</button>
         </p>
       </div>
 
       <div class="tab-pane" id="trade">
         <div class="inventory card-deck mb-3 text-center"></div>
-        <!--div class="card-deck mb-3">
-          <div class="trade-card card">
-            <div class="card-body">
-              <h5 class="card-title">EOS</h5>
-              <p class="card-text">
-                <div class="inventory">Available Inventory: 123</div>
-                <div>Price: 5.45 USD</div>
-                <div>Initial Margin: 50%</div>
-                <div>Minimum Margin: 15%</div>
-                <div>Daily Rate: 0.25%</div>
-              </p>
-            </div>
-          </div>
-
-          <div class="trade-card card">
-            <div class="card-body">
-              <h5 class="card-title">Binance Token</h5>
-              <p class="card-text">
-                <div class="inventory">Available Inventory: 200</div>
-                <div>Price: 9.8 USD</div>
-                <div>Initial Margin: 15</div>
-                <div>Minimum Margin: 15%</div>
-                <div>Daily Rate: 0.25%</div>
-              </p>
-            </div>
-          </div>
-
-          <div class="trade-card card">
-            <div class="card-body">
-              <h5 class="card-title">OmiseGO</h5>
-              <p class="card-text">
-                <div class="inventory">Available Inventory: 245</div>
-                <div>Price: 3.41 USD</div>
-                <div>Initial Margin: 50%</div>
-                <div>Minimum Margin: 15%</div>
-                <div>Daily Rate: 0.25%</div>
-              </p>
-            </div>
-          </div>
-
-          <div class="trade-card card">
-            <div class="card-body">
-              <h5 class="card-title">0x</h5>
-              <p class="card-text">
-                <div class="inventory">Available Inventory: 540</div>
-                <div>Price: 0.63 USD</div>
-                <div>Initial Margin: 50%</div>
-                <div>Minimum Margin: 15%</div>
-                <div>Daily Rate: 0.25%</div>
-              </p>
-            </div>
-          </div>
-        </div-->
       </div>
 
       <div class="tab-pane" id="positions">
@@ -173,18 +136,21 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"></h5>
+          <h5 class="modal-title"><b>Deposit </b><span class="deposit-modal-title"/></h5>
           <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
         </div>
         <div class="modal-body">
-          <div><strong>Trade Value:</strong> <span class="trading-value"></span></div>
-          <div><strong>Resulting Buying Power:</strong> <span class="buying-power"></span></div>
+          <div><p><b>ACCOUNT EFFECT</b></p></div>
+          <div><strong>Total Balance:</strong> <span class="totalBalance"></span></div>
+          <div><strong>Available Balance:</strong> <span class="availableBalance"></span></div>
+          <div><strong>Buying Power:</strong> <span class="buyingPower"></span></div>
+          <div><strong>Collateral:</strong> <span class="collateral"></span></div>
           <input type="hidden" name="trade_price">
           <input type="hidden" name="shares">
           <input type="hidden" name="ticker">
         </div>
         <div class="modal-footer">
-          <button data-toggle="modal" data-target="#deposit-confirmation-modal" class="btn btn-primary">Confirm</button>
+          <button data-toggle="modal" data-dismiss="modal" class="confirmDeposit btn btn-primary">Confirm</button>
         </div>
       </div>
     </div>
@@ -201,6 +167,48 @@
           <p class="transaction-link"></p>
           <div><strong>Status</strong> <span class="status">Pending</span></div>
           <div><strong>Transaction</strong> <span class="transaction"></span></div>
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-primary">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="withdraw-modal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><b>Withdraw </b><span class="withdraw-modal-title"/></h5>
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        </div>
+        <div class="modal-body">
+          <div><p><b>ACCOUNT EFFECT</b></p></div>
+          <div><strong>Total Balance:</strong> <span class="totalBalance"></span></div>
+          <div><strong>Available Balance:</strong> <span class="availableBalance"></span></div>
+          <div><strong>Buying Power:</strong> <span class="buyingPower"></span></div>
+          <div><strong>Collateral:</strong> <span class="collateral"></span></div>
+          <input type="hidden" name="trade_price">
+          <input type="hidden" name="shares">
+          <input type="hidden" name="ticker">
+        </div>
+        <div class="modal-footer">
+          <button data-toggle="modal" data-dismiss="modal" class="confirmWithdraw btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="withdraw-confirmation-modal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="transaction-link"></p>
+          <div><span class="message">Please allow a few seconds for funds to show back in your wallet</span></div>
         </div>
         <div class="modal-footer">
           <button data-dismiss="modal" class="btn btn-primary">Close</button>
@@ -248,5 +256,8 @@
       </div>
     </div>
   </div>
+  <script src="src/card-templates.js"></script>
+  <script src="src/spotWeb3.js"></script>
+  <script src="src/main.js"></script>
 </body>
 </html>
